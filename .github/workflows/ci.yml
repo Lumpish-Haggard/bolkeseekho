@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Start with one command, no keys
+        run: docker compose up -d --build
+      - name: Main screen loads and reports "key not set"
+        run: |
+          for i in $(seq 1 30); do curl -fsS http://localhost:8080/healthz && break; sleep 1; done
+          curl -fsS http://localhost:8080/ | grep -q BolkeSeekho
+          curl -fsS http://localhost:8080/js/app.js | grep -q "voice-first"
+          curl -fsS http://localhost:8080/api/config | grep -q key_not_set
+      - name: Container logs
+        if: always()
+        run: docker compose logs
+      - run: docker compose down
