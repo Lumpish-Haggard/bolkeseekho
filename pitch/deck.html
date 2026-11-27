@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>BolkeSeekho pitch deck</title>
+<style>
+  @page { size: 13.333in 7.5in; margin: 0; }
+  :root {
+    --ink: #0f1722; --muted: #4b5a6a; --faint: #8795a3; --line: #e3e0d8; --paper: #fbfaf6; --card: #ffffff;
+    --accent: #e8890c; --accent-soft: #fff3e0; --teal: #0c8f83; --teal-soft: #e3f5f2; --dark: #0a0f15; --gold: #ffb347;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Noto Sans", "Nirmala UI", sans-serif; color: var(--ink);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #ddd; }
+  .slide { width: 1280px; height: 720px; position: relative; overflow: hidden; background: var(--paper); padding: 52px 64px 56px;
+    page-break-after: always; break-after: page; margin: 0 auto; }
+  .slide:last-child { page-break-after: auto; break-after: auto; }
+  @media screen { .slide { margin: 24px auto; box-shadow: 0 6px 30px rgba(0,0,0,.18); } }
+  .kicker { font-size: 14px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 10px; }
+  h1 { font-size: 40px; line-height: 1.12; margin: 0 0 22px; letter-spacing: -.01em; }
+  h2 { font-size: 20px; margin: 0 0 8px; }
+  h3 { font-size: 16px; margin: 0 0 6px; color: var(--teal); text-transform: uppercase; letter-spacing: .06em; }
+  p, li { font-size: 18px; line-height: 1.45; margin: 0; }
+  ul { margin: 0; padding-left: 22px; }
+  li { margin: 0 0 8px; }
+  .muted { color: var(--muted); }
+  .small { font-size: 14.5px; line-height: 1.45; }
+  .foot { position: absolute; left: 64px; right: 64px; bottom: 22px; display: flex; justify-content: space-between; font-size: 12.5px; color: var(--faint); }
+  .foot b { color: var(--accent); }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; }
+  .cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .cols-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
+  .card p { font-size: 16.5px; }
+  .num { font-size: 44px; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+  .step { position: relative; padding-top: 44px; }
+  .step .n { position: absolute; top: 14px; left: 20px; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 800; font-size: 14px; display: grid; place-items: center; }
+  .quote { font-weight: 650; color: var(--teal); }
+  .band { margin-top: 20px; background: var(--teal-soft); border-left: 5px solid var(--teal); padding: 14px 18px; border-radius: 10px; font-size: 18px; }
+  .band.warm { background: var(--accent-soft); border-left-color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; font-size: 13.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding: 0 12px 8px 0; border-bottom: 2px solid var(--ink); }
+  td { vertical-align: top; font-size: 14.6px; line-height: 1.4; padding: 9px 12px 9px 0; border-bottom: 1px solid var(--line); }
+  td:first-child { font-weight: 700; width: 17%; font-size: 15.5px; }
+  td:last-child { color: #0b5f57; }
+
+  /* title slide */
+  .title { background: var(--dark); color: #eef3f8; padding: 64px 72px; }
+  .title .kicker { color: var(--gold); }
+  .title h1 { font-size: 76px; margin: 6px 0 18px; letter-spacing: -.02em; }
+  .title h1 span { color: var(--gold); }
+  .title .lede { font-size: 27px; line-height: 1.4; max-width: 980px; color: #d7e1eb; }
+  .pills { display: flex; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
+  .pills span { border: 1px solid #33475b; border-radius: 999px; padding: 9px 18px; font-size: 17px; color: #eef3f8; }
+  .title .foot { color: #8aa0b5; left: 72px; right: 72px; bottom: 34px; font-size: 15px; }
+  .title .foot b { color: var(--gold); }
+  .logo { position: absolute; right: 72px; top: 60px; width: 120px; height: 120px; }
+  .hindi { font-family: "Nirmala UI", "Noto Sans Devanagari", sans-serif; }
+  .tight li { margin-bottom: 7px; }
+  .tight.small li { font-size: 16px; line-height: 1.42; }
+  .stat-card { padding: 12px 18px; margin-bottom: 10px; }
+  .stat-card .num { font-size: 34px; margin-bottom: 4px; }
+  .stat-card p { font-size: 15.5px; line-height: 1.4; }
+</style>
+</head>
+<body>
+
+<!-- 1. Title -->
+<section class="slide title">
+  <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 4h20a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4H14l-6.5 5.5V24H6a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4z" fill="#ffb347"/><path d="M10.5 11.5v5M16 8.5v11M21.5 11.5v5" stroke="#1d1305" stroke-width="2.6" stroke-linecap="round"/></svg>
+  <p class="kicker">Voice-first study companion · Working prototype</p>
+  <h1>Bolke<span>Seekho</span></h1>
+  <p class="lede">Bolke seekho means "learn by speaking". Students learn from English textbooks by speaking in the language they think in: Hinglish, Hindi, Tamil or Bengali.</p>
+  <div class="pills">
+    <span>Built around Wispr Flow dictation</span>
+    <span>Spoken Feynman Check</span>
+    <span>English exam notes from your own words</span>
+    <span>Starts with one command, no keys</span>
+  </div>
+  <div class="foot"><span><b>github.com/Lumpish-Haggard/bolkeseekho</b></span><span>Run: docker compose up, then open localhost:8080</span></div>
+</section>
+
+<!-- 2. Problem -->
+<section class="slide">
+  <p class="kicker">The problem</p>
+  <h1 style="font-size:36px">They think in Hindi or Tamil. Their textbooks are in English.</h1>
+  <div class="cols">
+    <div>
+      <div class="card stat-card"><div class="num">4.50 crore</div><p>students in Indian higher education, <b>1.02 crore of them in STEM</b> (AISHE 2023-24). Their textbooks, PDFs and coding tutorials are in English.</p></div>
+      <div class="card stat-card"><div class="num">~29%</div><p>of Class 11-12 students study in English medium (NSS, 2017-18). Most reach college having learned science in Hindi or another Indian language.</p></div>
+      <div class="card stat-card"><div class="num">255 of 1,230</div><p>seats filled in the first year of AICTE's regional-language BTech, and some colleges have since dropped these courses. Students want to keep their English-medium degree.</p></div>
+    </div>
+    <div>
+      <h2>Where it hurts, every day</h2>
+      <ul>
+        <li><b>The language wall.</b> Students skim an English paragraph and memorise it without grasping it, because they never put the logic into their own words.</li>
+        <li><b>Dead time and tired eyes.</b> On a crowded bus, walking, or late at night, typing questions or bilingual notes on a cramped phone keyboard is impractical. Typing Indic scripts is slower still.</li>
+        <li><b>The illusion of competence.</b> Passive reading feels like learning. The gaps show up in the exam hall, when it is too late.</li>
+        <li><b>Asking feels risky.</b> First-generation learners hesitate to ask "basic" questions in class.</li>
+      </ul>
+      <div class="band warm">Cities we start with: Patna, Madurai, Kolkata. First-generation college students who commute daily.</div>
+    </div>
+  </div>
+  <div class="foot"><span><b>BolkeSeekho</b> · Problem</span><span>2</span></div>
+</section>
+
+<!-- 3. Solution -->
+<section class="slide">
+  <p class="kicker">The solution</p>
+  <h1>Say it in your language. Learn it in English.</h1>
+  <div class="cols-4">
+    <div class="card step"><span class="n">1</span><h2>Hear it simply</h2><p><span class="quote">"Explain this paragraph in simple Hindi."</span> A spoken explanation of the textbook section with an everyday Indian example: a pressure cooker, a cinema-hall queue, onion prices.</p></div>
+    <div class="card step"><span class="n">2</span><h2>Ask anything</h2><p><span class="quote">"Entropy kya hai?"</span> Answered in your language and grounded in the English paragraph on screen. Mixed-language questions work too.</p></div>
+    <div class="card step"><span class="n">3</span><h2>Explain it back</h2><p>The <b>Spoken Feynman Check</b>: you explain the concept aloud, as if teaching a friend. The app reads back the key terms it heard, then gives a score out of 10, what you got right, one gap and a hint.</p></div>
+    <div class="card step"><span class="n">4</span><h2>Keep English notes</h2><p>Your spoken explanation becomes 3 to 5 <b>exam-ready English bullet points</b>, saved next to your own words, with a re-check one week later.</p></div>
+  </div>
+  <div class="band">Students keep their English-medium degree, but they think, ask and explain in their own language. Gaps show up the same day, not in the exam hall.</div>
+  <div class="foot"><span><b>BolkeSeekho</b> · Solution</span><span>3</span></div>
+</section>
+
+<!-- 4. Why voice -->
+<section class="slide">
+  <p class="kicker">Why voice comes first</p>
+  <h1>Voice is the product, not a feature on top</h1>
+  <div class="cols">
+    <div class="card"><h3>Physically</h3><p>Commuters and tired learners need a zero-touch, eyes-free way to study. Tapping menus and typing Hindi, Tamil or Bengali on a phone keyboard is slow on a moving bus. Speaking is fast.</p></div>
+    <div class="card"><h3>Pedagogically</h3><p>The Feynman technique works by explaining a concept aloud. Saying it in your mother tongue exposes the gaps that multiple-choice buttons and copy-paste hide.</p></div>
+    <div class="card"><h3>By design</h3><p>After you choose a language, every step works by voice. The input box always has focus for Wispr Flow and sends itself after a pause, so you never tap Send. Every reply is spoken and also shown in large text.</p></div>
+    <div class="card"><h3>Measured</h3><p>The prototype counts the share of inputs that were spoken, how many commands it understood first time, and screen taps per session. These are the numbers the pilot will report.</p></div>
+  </div>
+  <div class="foot"><span><b>BolkeSeekho</b> · Why voice</span><span>4</span></div>
+</section>
+
+<!-- 5. Users -->
+<section class="slide">
+  <p class="kicker">Who it is for</p>
+  <h1>About 50 lakh core users, starting with Hinglish speakers</h1>
+  <div class="cols" style="grid-template-columns: 1.05fr 1fr">
+    <div>
+      <ul>
+        <li><b>Core users:</b> first-generation and non-English-medium STEM students in Tier-2 and Tier-3 cities who study from English textbooks. If half of India's 1.02 crore STEM students fit, that is about <b>50 lakh students</b>.</li>
+        <li><b>Also served:</b> BCom and economics students; working commuters learning to code from English tutorials; low-vision students who need an eyes-free way to study.</li>
+        <li><b>Languages:</b> Hinglish, Hindi, Tamil and Bengali, with English for everyone.</li>
+        <li><b>Beachhead:</b> Hinglish speakers in Bihar and Uttar Pradesh first, where Wispr Flow's Hinglish mode is strongest. Then Tamil Nadu and West Bengal.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:12px"><h3>Ritika · BTech year 1 · Patna</h3><p>Learned physics in Hindi. A 45-minute bus ride each way. Her exams are in English.</p></div>
+      <div class="card" style="margin-bottom:12px"><h3>Karthik · BSc Physics · Madurai</h3><p>Studied in Tamil until Class 12. Now studies from English PDFs late at night.</p></div>
+      <div class="card"><h3>Sohini · BCom · Kolkata</h3><p>Thinks in Bengali. Her economics textbook and notes are in English.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span><b>BolkeSeekho</b> · Users</span><span>5</span></div>
+</section>
+
+<!-- 6. Prototype -->
+<section class="slide">
+  <p class="kicker">What is built today</p>
+  <h1>Working prototype: one command, no keys</h1>
+  <div class="cols">
+    <div class="card">
+      <h3>Works today</h3>
+      <ul class="small tight">
+        <li><b>docker compose up</b>, then open localhost:8080. Runs fully without any API key.</li>
+        <li>Replies in 5 languages (Hinglish, Hindi, Tamil, Bengali, English), spoken with on-device voices.</li>
+        <li>3 chapters × 3 sections (Thermodynamics, Recursion, Supply and Demand) with Indian examples, and a 23-term glossary.</li>
+        <li>Commands understood in Roman Hinglish, Devanagari, Tamil and Bengali script, even when switching mid-sentence.</li>
+        <li>Spoken Feynman Check graded offline: rubric, misconception detection, and a check for reading the book aloud.</li>
+        <li>Paste your own notes to have them read aloud and quizzed. With a Claude key: open questions and AI grading.</li>
+        <li>133 automated tests. CI starts the Docker container and checks the main screen.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Noise, accents and mishearing</h3>
+      <ul class="small tight">
+        <li><b>Key terms are read back before grading:</b> "Not sure about: 'adiabetic', did you mean adiabatic?" The student answers yes, or fixes the word by voice.</li>
+        <li><b>Fuzzy matching</b> for near-misses (entrophy, bass case, equilibirum) and for English terms written in Devanagari, Tamil or Bengali script.</li>
+        <li><b>Unclear words can earn marks but never cost marks.</b></li>
+        <li><b>Negation is understood:</b> "energy cannot be created" is not flagged as the misconception "energy can be created".</li>
+        <li><b>Uncertain speech is confirmed first:</b> "Did you say …?" Filler and noise get "please say it again, a little closer to the mic".</li>
+        <li><b>Graceful degradation:</b> if the AI does not answer, the offline engine takes over and says so.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span><b>BolkeSeekho</b> · Prototype</span><span>6</span></div>
+</section>
+
+<!-- 7. Dependencies -->
+<section class="slide" style="padding-top:44px">
+  <p class="kicker">What it depends on</p>
+  <h1 style="font-size:34px;margin-bottom:14px">Every dependency has a fallback that is already built</h1>
+  <table>
+    <tr><th>Dependency</th><th>What it does for us</th><th>If it gets costly or stops working</th></tr>
+    <tr><td>Wispr Flow<br><span class="muted" style="font-weight:400;font-size:13px">voice input</span></td>
+      <td>Accurate dictation with a dedicated Hinglish mode, filler-word removal and self-corrections, on Mac, Windows, iPhone and Android. Free tier of about 2,000 words a week on desktop. India Pro is ₹320 a month on the annual plan, and students get 50% off.</td>
+      <td>Built-in fallback: the browser's own speech recognition (free in Chrome and Edge, with Hindi, Tamil and Bengali). Typing always works. Later: open Indic speech models on our own server.</td></tr>
+    <tr><td>Claude, via the Anthropic API<br><span class="muted" style="font-weight:400;font-size:13px">AI</span></td>
+      <td>Open questions, fresh examples, grading, and English notes written from the student's own words. Default model Claude Opus 5.5; Claude Haiku 5.5 for scale.</td>
+      <td>The offline engine already runs every command, the built-in explanations, glossary answers and rubric grading with no AI calls. The AI layer is one server module, so the model or the provider can be swapped.</td></tr>
+    <tr><td>Browser text-to-speech<br><span class="muted" style="font-weight:400;font-size:13px">voice output</span></td>
+      <td>Free voices on the device. Microsoft Edge and Android include Hindi, Tamil and Bengali.</td>
+      <td>Replies are always shown in large text as well. Later: open Indic text-to-speech models.</td></tr>
+    <tr><td>Chapter content</td>
+      <td>For each section: the English passage, explanations in 5 languages, glossary and rubric. Written once and reused by every student.</td>
+      <td>AI drafts new chapter packs, and faculty review them before release.</td></tr>
+    <tr><td>Hosting</td>
+      <td>One small Docker container with no database. Progress stays on the student's device.</td>
+      <td>Runs on any cloud or on a college's own server.</td></tr>
+  </table>
+  <p class="small muted" style="margin-top:12px"><b>Cost of AI per active student</b> (estimate: 20 study sessions a month, 5 AI calls per session, about 1,000 input and 800 output tokens per call, ₹88 per US dollar): <b>about ₹4 a month on Claude Haiku 5.5</b>, about ₹175 on Claude Opus 5.5. Commands, built-in explanations and glossary answers cost nothing, because they run on the device.</p>
+  <div class="foot"><span><b>BolkeSeekho</b> · Dependencies</span><span>7</span></div>
+</section>
+
+<!-- 8. Risk -->
+<section class="slide">
+  <p class="kicker">Main risk</p>
+  <h1>Mishearing that turns into wrong teaching</h1>
+  <div class="cols" style="grid-template-columns: 1fr 1.15fr">
+    <div class="card">
+      <h3>The risk</h3>
+      <p>Wispr Flow handles Hindi-English mixing (Hinglish) today. For Tamil and Bengali it transcribes one language per dictation, so English terms like "entropy" inside a Tamil sentence are the most likely to be misheard.</p>
+      <p style="margin-top:10px">A misheard term could fail a correct explanation, or the AI could explain the wrong concept, and students would stop trusting the app.</p>
+    </div>
+    <div class="card">
+      <h3>What we do about it (built into the prototype)</h3>
+      <ul class="small tight">
+        <li>Launch Hinglish-first, and set each student's language at onboarding.</li>
+        <li>Match transcripts against each chapter's glossary in every script. For example, energy written as एनर्जी, எனர்ஜி or এনার্জি is still matched.</li>
+        <li>Read the key terms back before grading: "I heard entropy and closed system, right?"</li>
+        <li>Never deduct marks for low-confidence words.</li>
+        <li>Ground every explanation in the source paragraph shown on screen.</li>
+        <li>Detect misconceptions only where there is no negation, so a correct statement is never penalised.</li>
+        <li>Faculty spot-check AI grades during the pilot.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="band" style="margin-top:14px;font-size:16.5px">Tamil and Bengali code-switching follows as Wispr Flow extends mixed-language support beyond Hindi (announced for the next 12 months).</div>
+  <div class="foot"><span><b>BolkeSeekho</b> · Risk</span><span>8</span></div>
+</section>
+
+<!-- 9. Metrics -->
+<section class="slide">
+  <p class="kicker">How we will know it works</p>
+  <h1>Four measurements, decided before the pilot starts</h1>
+  <div class="cols-4">
+    <div class="card"><div class="num">+10 pts</div><h2>Learning gain</h2><p>In each pilot class, half the students use BolkeSeekho for two chapters and half study as usual. Both halves take the same concept test two weeks later.</p></div>
+    <div class="card"><div class="num">70%</div><h2>Retention</h2><p>Share of concepts passed in a Feynman Check that still score 7/10 or more when re-checked one week later. The app schedules the re-check.</p></div>
+    <div class="card"><div class="num">80% · 90%</div><h2>Voice-first proof</h2><p>80% of study sessions finished without touching the screen, and 90% of commands understood the first time. The prototype already measures both.</p></div>
+    <div class="card"><div class="num">↓ backlogs</div><h2>Real outcomes</h2><p>Pass rates and backlogs in the pilot subjects, compared with the previous batch at the same colleges.</p></div>
+  </div>
+  <div class="foot"><span><b>BolkeSeekho</b> · Metrics</span><span>9</span></div>
+</section>
+
+<!-- 10. Launch -->
+<section class="slide" style="padding-top:44px">
+  <p class="kicker">Launch plan</p>
+  <h1 style="font-size:36px;margin-bottom:16px">First 1,000 students in Patna, then 50,000 in year one</h1>
+  <div class="cols-3" style="margin-bottom:16px">
+    <div class="card"><h3>Dec 2026 – Jan 2027 · Content</h3><p class="small">Write 30 faculty-reviewed chapter packs for the first-year subjects every engineering and science student takes (Engineering Physics, Chemistry, Programming in C), plus BCom Economics. Hinglish first.</p></div>
+    <div class="card"><h3>Jan – May 2027 · Pilot</h3><p class="small">1,000 Hinglish-speaking students in 2 or 3 Patna colleges for one semester, free for students. Faculty spot-check grades. We report the four measurements.</p></div>
+    <div class="card"><h3>Jul – Dec 2027 · Expand</h3><p class="small">Madurai (Tamil) and Kolkata (Bengali), as Wispr Flow's mixed-language support grows. Goal: 50,000 learners by the end of year one.</p></div>
+  </div>
+  <div class="cols">
+    <div>
+      <h2>How we reach the first users</h2>
+      <ul class="small">
+        <li>A faculty champion in each partner college, who also spot-checks grades.</li>
+        <li>One student ambassador per section, demos at first-year orientation, and class WhatsApp groups.</li>
+        <li>Launch two weeks before mid-semester exams, when students need revision most.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>How it grows and pays for itself</h2>
+      <ul class="small">
+        <li>Notes written from the student's own words are easy to share on WhatsApp, and each one is an invitation.</li>
+        <li>Class streaks and a faculty dashboard bring in whole first-year batches through their college.</li>
+        <li>Free for students. Colleges pay about ₹200 per student per semester for AI grading and the dashboard. The AI cost on Claude Haiku 5.5 is about ₹25 per student per semester.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span><b>BolkeSeekho</b> · Launch plan</span><span>10</span></div>
+</section>
+
+<!-- 11. Next -->
+<section class="slide">
+  <p class="kicker">Next, for the finale</p>
+  <h1>From prototype to a semester-ready product</h1>
+  <div class="cols">
+    <ul>
+      <li>Syllabus-aligned chapter packs, and importing a page range from a textbook PDF.</li>
+      <li>Navigating video tutorials by voice: "jump to the recursion example in the video and slow it down".</li>
+      <li>A faculty dashboard and spaced re-checks after 1, 7 and 30 days.</li>
+    </ul>
+    <ul>
+      <li>More languages as Wispr Flow's mixed-language support grows: Telugu, Marathi and Kannada.</li>
+      <li>An installable Android app that keeps chapters offline for patchy networks on bus routes.</li>
+      <li>Open Indic speech and voice models as a second, low-cost voice layer.</li>
+    </ul>
+  </div>
+  <div class="band warm" style="margin-top:34px;font-size:22px"><b>BolkeSeekho: bolke seekho, learn by speaking.</b> Try it now: <b>docker compose up</b>, open <b>localhost:8080</b>, and say "Hinglish".</div>
+  <div class="foot"><span><b>BolkeSeekho</b> · github.com/Lumpish-Haggard/bolkeseekho</span><span>11</span></div>
+</section>
+
+</body>
+</html>
