@@ -1,0 +1,20 @@
+{
+  "name": "bolkeseekho",
+  "version": "1.0.0",
+  "description": "Voice-first study companion: learn from English textbooks by speaking in Hindi, Hinglish, Tamil, Bengali or English. Built for Wispr Flow.",
+  "type": "module",
+  "private": true,
+  "license": "SEE LICENSE IN LICENSE",
+  "engines": {
+    "node": ">=18.18"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.14.0",
+    "zod": "^4.6.7"
+  }
+}

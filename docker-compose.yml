@@ -1,0 +1,17 @@
+# Start BolkeSeekho with one command:
+#
+#   docker compose up
+#
+# then open http://localhost:8080 in Chrome or Edge. No keys are needed: without
+# ANTHROPIC_API_KEY the app runs its offline engine and shows "Offline · key not set".
+services:
+  bolkeseekho:
+    build: .
+    image: bolkeseekho:1.0
+    ports:
+      - "${HOST_PORT:-8080}:8080" # if 8080 is busy: HOST_PORT=8090 docker compose up
+    environment:
+      # Optional: enables open questions, fresh examples and AI grading.
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      AI_MODEL: ${AI_MODEL:-claude-opus-5-5}
+    restart: unless-stopped

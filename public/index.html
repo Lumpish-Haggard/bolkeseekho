@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>BolkeSeekho</title>
+  <meta name="description" content="Voice-first study companion: learn from English textbooks by speaking in Hindi, Hinglish, Tamil, Bengali or English.">
+  <meta name="theme-color" content="#0a0f15">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/js/app.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div class="brand">
+        <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M6 4h20a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4H14l-6.5 5.5V24H6a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4z" fill="#ffb347"/>
+          <path d="M10.5 11.5v5M16 8.5v11M21.5 11.5v5" stroke="#1d1305" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+        <span>Bolke<b>Seekho</b></span>
+      </div>
+      <div class="status">
+        <button class="pill" id="langPill" data-action="settings" title="Reply language">Language</button>
+        <button class="pill ai" id="aiPill" data-action="settings">Offline</button>
+        <span class="pill streak" id="streakPill" title="Days in a row with a passed Feynman Check">🔥 0</span>
+        <button class="icon-btn" data-action="settings" aria-label="Settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M19.4 13.5a7.6 7.6 0 0 0 0-3l2-1.5-2-3.4-2.4 1a7.6 7.6 0 0 0-2.6-1.5L14 2.6h-4l-.4 2.5A7.6 7.6 0 0 0 7 6.6l-2.4-1-2 3.4 2 1.5a7.6 7.6 0 0 0 0 3l-2 1.5 2 3.4 2.4-1a7.6 7.6 0 0 0 2.6 1.5l.4 2.5h4l.4-2.5a7.6 7.6 0 0 0 2.6-1.5l2.4 1 2-3.4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="progress" aria-label="Sections mastered">
+      <div class="bar"><span id="progressFill"></span></div>
+      <span id="progressLabel"></span>
+    </div>
+
+    <main id="screen" class="screen"></main>
+
+    <section class="dock" aria-label="Talk to BolkeSeekho">
+      <div class="reply">
+        <div class="you" id="you"></div>
+        <div class="reply-head">
+          <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span>BolkeSeekho</span>
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        </div>
+        <p class="reply-text" id="replyText" aria-live="polite"></p>
+      </div>
+      <div class="chips" id="chips" aria-label="Things you can say"></div>
+      <div class="interim" id="interim"></div>
+      <div class="voicebar">
+        <button class="mic" id="micBtn" data-action="mic" aria-pressed="false" aria-label="Hands-free listening">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="field">
+          <label for="voiceInput" class="sr-only">Speak with Wispr Flow, or type</label>
+          <textarea id="voiceInput" rows="1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Hold your Wispr Flow key and speak, or tap the mic"></textarea>
+          <div class="sendbar" aria-hidden="true"><span id="sendFill"></span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <dialog id="settings" aria-labelledby="settingsTitle">
+    <div class="dialog-head">
+      <h2 id="settingsTitle">Settings</h2>
+      <button class="icon-btn" data-action="closeSettings" aria-label="Close settings">✕</button>
+    </div>
+    <div id="settingsBody"></div>
+    <div class="dialog-foot">
+      <button class="ghost danger" data-action="reset">Reset progress</button>
+      <button class="primary" data-action="closeSettings">Done</button>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <noscript><p class="noscript">BolkeSeekho needs JavaScript to listen and talk.</p></noscript>
+</body>
+</html>

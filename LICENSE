@@ -1,0 +1,50 @@
+BolkeSeekho
+Copyright (c) 2026 Tarun Rankawat. All rights reserved.
+
+This repository is publicly visible only so that it can be reviewed as a
+hackathon submission. It is NOT open source. No licence to the software or to
+any of its contents is granted except the limited permission below.
+
+1. What this covers
+
+   "The Work" means everything in this repository: the source code, the chapter
+   content (textbook passages, explanations and translations in every language,
+   glossaries, rubrics, sample answers), the prompts, the design, the
+   documentation and the pitch deck.
+
+2. Permitted use: evaluation only
+
+   The organisers and judges of the hackathon to which BolkeSeekho was
+   submitted may view the Work, and build and run it (for example with
+   `docker compose up`), solely to evaluate this submission.
+
+3. Not permitted without prior written permission from the copyright holder
+
+   - any use of the Work for any purpose other than evaluation under section 2,
+     whether commercial or non-commercial;
+   - copying, modifying, merging, publishing, distributing, sublicensing,
+     hosting as a service, or selling the Work or any part of it;
+   - creating derivative works, including products or services based on the
+     Work's code, content or design;
+   - using the Work, or any part of it, to train or evaluate machine-learning
+     models.
+
+   Viewing or forking this repository on GitHub, as GitHub's Terms of Service
+   allow, does not grant any of these rights.
+
+4. Licensing and commercial enquiries
+
+   For a commercial licence, an acquisition, or any use not permitted above,
+   contact the copyright holder through https://github.com/Lumpish-Haggard.
+
+5. Third-party components
+
+   Third-party packages installed at build time (such as @anthropic-ai/sdk and
+   zod) remain under their own licences. This licence covers only the Work.
+
+6. No warranty
+
+   THE WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM,
+   DAMAGES OR OTHER LIABILITY ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+   WORK OR ITS USE.
