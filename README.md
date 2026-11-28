@@ -14,7 +14,11 @@ docker compose up
 
 Open **http://localhost:8080** in Chrome or Edge. No API keys and no account are needed. Without a key the app runs its offline engine, and the header shows *Offline · key not set*.
 
-- **Port 8080 already in use?** Run `HOST_PORT=8090 docker compose up` and open http://localhost:8090.
+- **No git?** Docker can build straight from GitHub: `docker build -t bolkeseekho https://github.com/Lumpish-Haggard/bolkeseekho.git`, then `docker run --rm -p 8080:8080 bolkeseekho`.
+- **Port 8080 already in use?** Run `HOST_PORT=8090 docker compose up` (PowerShell: `$env:HOST_PORT=8090; docker compose up`) and open http://localhost:8090.
+- **Pulled a newer version?** Run `docker compose up --build`. Otherwise Docker reuses the image it built last time.
+- **"Cannot connect to the Docker daemon"?** Start Docker Desktop, wait until it says it is running, then try again.
+- **Using the mic button?** Open the app at `localhost` on the same computer. Browsers allow the microphone only on `localhost` or HTTPS. Wispr Flow and typing work either way.
 - **Without Docker:** with Node.js 18 or later, run `npm ci && npm start`.
 
 ## Try it in two minutes
@@ -81,7 +85,7 @@ Every reply is spoken with the device's text-to-speech in your language and show
 | `PORT` | `8080` | Server port inside the container, and for `npm start`. |
 | `AI_RATE_LIMIT_PER_MIN` | `20` | Per-IP limit on AI calls, to protect a public demo key. |
 
-With Docker, either run `ANTHROPIC_API_KEY=sk-ant-... docker compose up`, or copy `.env.example` to `.env` and fill it in.
+With Docker, copy `.env.example` to `.env` and fill it in (this works in every shell), or run `ANTHROPIC_API_KEY=sk-ant-... docker compose up` (PowerShell: `$env:ANTHROPIC_API_KEY="sk-ant-..."; docker compose up`). Compose also picks up an `ANTHROPIC_API_KEY` that is already set in your shell, so unset it if you want the offline mode.
 
 ## How it is built
 

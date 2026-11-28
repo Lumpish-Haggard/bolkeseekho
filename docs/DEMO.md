@@ -20,7 +20,7 @@ If you need to cut a reply short, say "ruko" or "stop", or press Esc.
 | 0:45–0:55 | "Hinglish mein bolo", then "entropy kya hai?" | The language switches and the definition is spoken in Hinglish |
 | 0:55–1:05 | "What does entrophy mean?" | It answers about *entropy* and notes "I heard 'entrophy'": mishearings are handled |
 | 1:05–1:50 | "Test me", then explain section 1 in your own words for about 20 seconds (script below), then "haan" | The key terms it heard are read back. Then 10/10, what you got right, and English notes saved beside your original words |
-| 1:50–2:15 | "Section 3", "test me", tap **Use a sample answer** | The read-back says: "Not sure about: 'adiabetic', did you mean adiabatic?" |
+| 1:50–2:15 | "Section 3", "test me", tap **Sample answer use karo** | The read-back says: "Not sure about: 'adiabetic', did you mean adiabatic?" |
 | | "nahi", then "adiabatic" | It grades with the corrected word. Unclear words never cost marks |
 | 2:15–2:35 | "Tamil mein bolo", then "விளக்கு" | A spoken Tamil explanation (cycle pump example) |
 | 2:35–2:50 | "My notes" | English revision notes, your own words, the re-check date, and the voice-first metrics: % spoken, % understood first time, 0 taps |
@@ -32,7 +32,7 @@ If you need to cut a reply short, say "ruko" or "stop", or press Esc.
 
 ## Quick checks for judges
 
-You don't need a microphone for any of these: type each line and press Enter.
+You don't need a microphone for any of these: type each line and press Enter. The suggestion chips are labelled in the current reply language. For example, after `explain in simple Hindi`, **Use a sample answer** reads *सैंपल जवाब इस्तेमाल करो*. Typing the English label works in every language.
 
 - `Hinglish` → `open thermodynamics` → `explain in simple Hindi` → `entropy kya hai?` → `test me`. Then tap **Use a sample answer** → `haan` → `my notes`.
 - **Misconception:** on section 2, tap **Sample with a mistake**. The answer says ΔU = Q + W, and the app catches the sign error.
