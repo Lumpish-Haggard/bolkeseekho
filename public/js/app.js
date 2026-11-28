@@ -137,7 +137,7 @@ async function say(text, opts = {}) {
   if (opts.kind !== 'status') state.lastSpoken = { text, opts: { ...opts, lang, voiceLang } };
   renderReply();
   if (state.settings.voiceOn === false || opts.silent) { maybeListen(); return { spoken: false, reason: 'muted' }; }
-  if (mic.listening) mic.abort();
+  mic.abort(); // also stops a session that is still opening, so the mic never hears the reply
   const res = await speaker.speak(opts.sentences || text, voiceLang, { rate: state.settings.rate, onChunk: opts.onChunk });
   opts.onDone?.(res);
   if (res.reason === 'no-voice') warnNoVoice(voiceLang);
@@ -187,8 +187,11 @@ function maybeListen() {
   mic.start(LANG_META[L()].speech);
 }
 
-function onMicIdle({ gotFinal } = {}) {
-  if (!state.handsFree || gotFinal) return;
+// Every session end re-arms hands-free listening. maybeListen() waits while a reply is
+// spoken or graded, and say() listens again when the reply ends. (Waiting only for say()
+// left the mic off for good when a reply was not spoken: no voice installed, or voice off.)
+function onMicIdle() {
+  if (!state.handsFree) return;
   if (state.noSpeech >= 6) {
     state.handsFree = false;
     renderMic();
@@ -686,7 +689,7 @@ async function gradeNow({ acceptLow, extra = [], prefix = '' }) {
       chapterTitle: ch.title,
       sectionTitle: sec.title,
       sectionText: sec.text,
-      concepts: sec.concepts.map((c) => `${c.label}: ${c.note}`),
+      concepts: sec.concepts.map((c) => `${c.label}: ${c.note}`.slice(0, 400)), // server limit; pasted texts can have long sentences
       transcript: f.transcript,
       confirmedTerms: [...sure, ...(acceptLow ? unsure.map((u) => u.term) : []), ...extra],
       unsureTerms: acceptLow ? [] : unsure.map((u) => u.heard),

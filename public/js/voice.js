@@ -64,6 +64,7 @@ export class Speaker {
   get supported() { return Boolean(this.synth); }
 
   voiceFor(langKey) {
+    if (this.synth && !this.voices.length) this.voices = this.synth.getVoices() || []; // voices load late in Chrome/Edge
     const prefs = LANG_META[langKey]?.voices || [langKey];
     const quality = (v) => (/natural|neural/i.test(v.name) ? 4 : 0) + (/online|google/i.test(v.name) ? 2 : 0) + (v.default ? 1 : 0);
     for (const code of prefs) {
@@ -150,15 +151,22 @@ export class MicInput {
   get supported() { return Boolean(this.SR); }
 
   start(lang) {
-    if (!this.SR || this.listening) return false;
+    // One session at a time. `rec` is set from start() until `end`, so a session that is
+    // still opening the mic (before `onstart`) also blocks a second one.
+    if (!this.SR || this.rec) return false;
     const rec = new this.SR();
     rec.lang = lang;
     rec.interimResults = true;
     rec.maxAlternatives = 3;
     rec.continuous = false;
     let gotFinal = false;
-    rec.onstart = () => { this.listening = true; this.handlers.onState?.('listening'); };
+    rec.onstart = () => {
+      if (this.rec !== rec) return;
+      this.listening = true;
+      this.handlers.onState?.('listening');
+    };
     rec.onresult = (e) => {
+      if (this.rec !== rec) return;
       let interim = '';
       for (let i = e.resultIndex; i < e.results.length; i++) {
         const r = e.results[i];
@@ -171,24 +179,31 @@ export class MicInput {
       }
       if (interim) this.handlers.onInterim?.(interim);
     };
-    rec.onerror = (e) => this.handlers.onError?.(e.error || 'unknown');
+    rec.onerror = (e) => { if (this.rec === rec) this.handlers.onError?.(e.error || 'unknown'); };
     rec.onend = () => {
+      if (this.rec !== rec) return;
       this.listening = false;
       this.rec = null;
       this.handlers.onState?.('idle', { gotFinal });
     };
     try {
-      rec.start();
       this.rec = rec;
+      rec.start();
       return true;
     } catch {
+      this.rec = null;
       this.handlers.onError?.('start-failed');
       return false;
     }
   }
 
   stop() { try { this.rec?.stop(); } catch { /* already stopped */ } }
-  abort() { try { this.rec?.abort(); } catch { /* already stopped */ } }
+  abort() {
+    const rec = this.rec;
+    if (!rec) return;
+    if (!this.listening) this.rec = null; // never opened the mic: free the slot now; its late events are ignored
+    try { rec.abort(); } catch { /* already stopped */ }
+  }
 }
 
 /**
